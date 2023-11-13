@@ -1,8 +1,8 @@
-let titleDiv = 
-'<p class="avenir tl f2 mw6 center mt2 mb2">Diminishing Returns of High-Rise Living in New York City: Balancing Between Views and Energy Efficiency</p>' +
-'<p class="code tl f6 mw6 center mt3 lh-copy">A project by <a class="link underline black hover-red" href="https://www.linkedin.com/in/suji-lee-0b824419b/" target="_blank">Suji Lee</a> from <a class="link underline black hover-red" href="https://www.arch.columbia.edu/programs/15-m-s-computational-design-practices" target="_blank">MSCDP at GSAPP Columbia University</a>.</p>' +
-'<br><br><p class="title_gif"><img src="./data/view3_07.gif">';
-
+let titleDiv =
+  '<p class="avenir tl f2 mw6 center mt2 mb2">Diminishing Returns of High-Rise Living in New York City: Balancing Between Views and Energy Efficiency</p>' +
+  '<p class="code tl f6 mw6 center mt3 lh-copy">A project by <a class="link underline black hover-red" href="https://www.linkedin.com/in/suji-lee-0b824419b/" target="_blank">Suji Lee</a> from <a class="link underline black hover-red" href="https://www.arch.columbia.edu/programs/15-m-s-computational-design-practices" target="_blank">MSCDP at GSAPP Columbia University</a>.</p>' +
+  '<br><br><p class="title_gif"><img src="./data/view3_07.gif">' +
+  '<br><br><br><br></p><p style="text-align: center;">Scroll to continue<br>▼</p>';
 let divChapter1 =
   '<div class="ph4 pt3 pb4"><p class="avenir tl f4">NEW YORK STATE DENSITY MAP IN 2021</p>' +
   `<br><p class="code tl lh-copy f6">New York City continues to draw in people from all corners of the world, despite its confined footprint. With the population around Manhattan becoming increasingly dense, the inevitable outcome is the rising height of buildings, a necessity driven by the need to accommodate this growing influx of residents.</p>` +
@@ -15,10 +15,8 @@ let divChapter1 =
             <div><span style="background-color: #c1cfe3"></span>Moderate Density (5 - 10)</div>
             <div><span style="background-color: #e2eaf3"></span>Low Density (0 - 5)</div>
         </div>` +
-        '<p class="code tl lh-copy f7 mb0 mt3">Data Sorce: <a class="link underline black hover-red" href="https://www.census.gov/topics/population/data.html" target="_blank">United States Census Data (2021)</a></p>' +
-
+  '<p class="code tl lh-copy f7 mb0 mt3">Data Sorce: <a class="link underline black hover-red" href="https://www.census.gov/topics/population/data.html" target="_blank">United States Census Data (2021)</a></p>' +
   '</div>';
-
 
 let divChapter2 =
   '<div class="ph4 pt3 pb4"><p class="avenir tl f4">2023 High-Rise Residential Buildings in NYC</p>' +
@@ -40,96 +38,97 @@ let divChapter3 =
             <div><span style="background-color: #7fb5aa"></span>Low (100 > 50)</div>
             <div><span style="background-color: #5578b4"></span>Very Low (50 >)</div>
         </div>` +
-        '<p class="code tl lh-copy f7 mb0 mt3">Data Sorce: <a class="link underline black hover-red" href="https://climate.cityofnewyork.us/" target="_blank">NYC Mayor Office of Climate & Environmental Justice</a></p>' +
-  "</div>";
+  '<p class="code tl lh-copy f7 mb0 mt3">Data Sorce: <a class="link underline black hover-red" href="https://climate.cityofnewyork.us/" target="_blank">NYC Mayor Office of Climate & Environmental Justice</a></p>' +
+  '</div>';
 
 const config = {
-    MAPBOX_ACCESS_TOKEN : 'pk.eyJ1IjoiY2xheW5lIiwiYSI6ImNsa2lzZ2dlYjBkNmwzZm9hY3VyMTBuanUifQ.hBUlDyGnCEG28_Mt-DPT7g',
-    style: 'mapbox://styles/mapbox/light-v11',
-    title: titleDiv,
-    chapters: [
+  MAPBOX_ACCESS_TOKEN:
+    'pk.eyJ1IjoiY2xheW5lIiwiYSI6ImNsa2lzZ2dlYjBkNmwzZm9hY3VyMTBuanUifQ.hBUlDyGnCEG28_Mt-DPT7g',
+  style: 'mapbox://styles/mapbox/light-v11',
+  title: titleDiv,
+  chapters: [
+    {
+      id: 'one',
+      chapterDiv: divChapter1,
+      location: {
+        center: [-74.03645, 40.73021],
+        zoom: 10,
+
+        pitch: 0,
+        bearing: 0,
+      },
+      mapAnimation: 'flyTo',
+      rotateAnimation: false,
+      callback: '',
+      onChapterEnter: [
         {
-            id: 'one',
-            chapterDiv: divChapter1,
-            location: {
-                center: [-74.03645, 40.73021],
-                zoom: 10,
-                
-                pitch: 0,
-                bearing: 0,
-            },
-            mapAnimation: "flyTo",
-            rotateAnimation: false,
-            callback: "",
-            onChapterEnter: [
-            {
-                layer: "density",
-                opacity: 1,
-                duration: 300,
-            },
-        ],
-            onChapterExit: [
-            {
-                layer: "density",
-                opacity: 0,
-                duration: 300,
-            },
-            ],
+          layer: 'density',
+          opacity: 1,
+          duration: 300,
         },
+      ],
+      onChapterExit: [
         {
-            id: 'two',
-            chapterDiv: divChapter2,
-            location: {
-                center: [-74.01187, 40.73242],
-                zoom: 11.7,
-                pitch: 28,
-                bearing: -10.40,
-            },
-            mapAnimation: "flyTo",
-            rotateAnimation: true,
-            callback: "",
-            onChapterEnter: [
-            {
-                layer: "300ftoutput",
-                opacity: 1,
-                duration: 300,
-            },
-        ],
-            onChapterExit: [
-            {
-                layer: "300ftoutput",
-                opacity: 0,
-                duration: 300,
-            },
-            ],
+          layer: 'density',
+          opacity: 0,
+          duration: 300,
         },
+      ],
+    },
+    {
+      id: 'two',
+      chapterDiv: divChapter2,
+      location: {
+        center: [-74.01187, 40.73242],
+        zoom: 11.7,
+        pitch: 28,
+        bearing: -10.4,
+      },
+      mapAnimation: 'flyTo',
+      rotateAnimation: true,
+      callback: '',
+      onChapterEnter: [
         {
-            id: 'three',
-            chapterDiv: divChapter3,
-            location: {
-                center: [-74.01661, 40.71193],
-                zoom: 13.77,
-                zoomSmall: 9,
-                pitch: 0,
-                bearing: 0,
-            },
-            mapAnimation: "flyTo",
-            rotateAnimation: false,
-            callback: "",
-            onChapterEnter: [
-            {
-                layer: "energy",
-                opacity: 1,
-                duration: 300,
-            },
-        ],
-            onChapterExit: [
-            {
-                layer: "energy",
-                opacity: 0,
-                duration: 300,
-            },
-            ],
+          layer: '300ftoutput',
+          opacity: 1,
+          duration: 300,
         },
-    ]
-}
+      ],
+      onChapterExit: [
+        {
+          layer: '300ftoutput',
+          opacity: 0,
+          duration: 300,
+        },
+      ],
+    },
+    {
+      id: 'three',
+      chapterDiv: divChapter3,
+      location: {
+        center: [-74.01661, 40.71193],
+        zoom: 13.77,
+        zoomSmall: 9,
+        pitch: 0,
+        bearing: 0,
+      },
+      mapAnimation: 'flyTo',
+      rotateAnimation: false,
+      callback: '',
+      onChapterEnter: [
+        {
+          layer: 'energy',
+          opacity: 1,
+          duration: 300,
+        },
+      ],
+      onChapterExit: [
+        {
+          layer: 'energy',
+          opacity: 0,
+          duration: 300,
+        },
+      ],
+    },
+  ],
+};
